@@ -2,20 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.alive{
+    box-shadow: 0 10px 0 rgb(26, 31, 28);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.alive:focus{
+    outline: none;
+    border:none
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.alive:active{
+    box-shadow: 0 5px 0 black;
+    transform: translateY(5px);
+    transition: all 0.1s ease-in-out;
+
 }
