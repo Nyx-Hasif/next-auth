@@ -6,6 +6,7 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { FaBell } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { RiLogoutBoxLine } from "react-icons/ri";
+import { signOut } from "next-auth/react";
 
 
 const Navbar = () => {
@@ -57,9 +58,9 @@ const Navbar = () => {
       </div>
       {/* icons */}
       <div className='flex flex-row gap-4'>
-        <i className=" text-black text-2xl"><IoPersonAddSharp/></i>
-        <i className=" text-black text-2xl"><AiOutlineMessage /></i>
-        <i className=" text-black text-2xl"><FaBell /></i>
+        <i className=" text-black text-2xl sm:block hidden"><IoPersonAddSharp/></i>
+        <i className=" text-black text-2xl sm:block hidden"><AiOutlineMessage /></i>
+        <i className=" text-black text-2xl sm:block hidden"><FaBell /></i>
         <div className='relative' ref={dropdownRef}>
           <button onClick={toggleDropdown} className=" text-black text-2xl"><IoMdArrowDropdown /></button>
           {isOpen?<div className="absolute end-0 z-10 mt-2 w-56 rounded-md border border-gray-100 bg-white shadow-lg" role="menu">
@@ -67,7 +68,7 @@ const Navbar = () => {
                     <a href="#" className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700" role="menuitem">My Profile</a>
                     <a href="#" className="block rounded-lg px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-700" role="menuitem">My Account</a>
                     <form method="POST" action="#">
-                        <button type="submit" className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50" role="menuitem"><RiLogoutBoxLine className='text-lg'/>Log Out</button>
+                        <button onClick={()=>signOut()} type="submit" className="flex w-full items-center gap-2 rounded-lg px-4 py-2 text-sm text-red-700 hover:bg-red-50" role="menuitem"><RiLogoutBoxLine className='text-lg'/>Log Out</button>
                     </form>
                 </div>
             </div>:null}
